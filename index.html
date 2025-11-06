@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$MCHY 预售 - 猛插何一 (BSC链)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FFD700, #FFA500); /* 金黄渐变 */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .address-section {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .address {
+            font-family: monospace;
+            font-size: 14px;
+            color: #333;
+            word-break: break-all;
+            margin-bottom: 10px;
+        }
+        .copy-btn {
+            background: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .copy-btn:hover {
+            background: #FFA500;
+        }
+        .rules {
+            text-align: left;
+            font-size: 14px;
+            margin: 20px 0;
+            line-height: 1.5;
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .rules ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .progress {
+            background: #f0f0f0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: #FFD700;
+            height: 100%;
+            width: 25%; /* JS 可更新 */
+            transition: width 0.3s;
+        }
+        .progress-text {
+            font-size: 14px;
+            color: #666;
+        }
+        .footer {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+        .connect-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px;
+            display: block;
+            width: 100%;
+        }
+        .connect-btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">🔥 $MCHY 预售 - 猛插何一</div>
+        <div class="subtitle">BSC 链预售 | 1:100000 比率 | 限时抢购</div>
+        
+        <p style="font-size: 18px; color: #333; margin-bottom: 10px;">转账规则：0.01 BNB = 1000 $MCHY</p >
+        
+        <div class="address-section">
+            <div class="address">0xa66c4c7e89b31496717aa1eb3b27e250c0e8d328</div>
+            <button class="copy-btn" onclick="copyAddress()">复制地址</button>
+        </div>
+        
+        <div class="rules">
+            <strong>操作步骤：</strong>
+            <ul>
+                <li>MetaMask 切换到 BSC 主网（Chain ID: 56）</li>
+                <li>转 BNB 到以上地址（Memo: 你的 TG/邮箱）</li>
+                <li>转账后 24h 内 TG 群 @mchy_group 领 token</li>
+                <li>最小 0.01 BNB，批量转可享 5% 奖金</li>
+            </ul>
+        </div>
+        
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">已售 25% (5/20 BNB)</div>
+        
+        <button class="connect-btn" onclick="connectWallet()">连接钱包 (模拟)</button>
+        
+        <div class="footer">
+            风险自负，DYOR | 社区：TG @mchy_group | X: @mchy_meme<br>
+            预售结束自动上 DEX，LP 烧毁 100% 💥
+        </div>
+    </div>
+
+    <script>
+        function copyAddress() {
+            const address = '0xa66c4c7e89b31496717aa1eb3b27e250c0e8d328';
+            navigator.clipboard.writeText(address).then(() => {
+                alert('地址已复制！去 MetaMask 转 BNB 吧~');
+            });
+        }
+
+        function connectWallet() {
+            alert('模拟连接成功！请手动切换到 BSC 链，转账到地址。真实集成需 Web3.js。');
+            // 这里可加 ethers.js 检测链 ID == 56
+        }
+
+        // 模拟进度更新（每 30s 随机 +1%）
+        let progress = 25;
+        setInterval(() => {
+            progress += Math.random() * 2;
+            if (progress > 100) progress = 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            const sold = Math.floor(progress / 5); // 假设总 20 BNB
+            document.getElementById('progressText').innerText = `已售 ${progress.toFixed(0)}% (${sold}/${20} BNB)`;
+        }, 30000);
+    </script>
+</body>
+</html>
